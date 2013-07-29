@@ -4,7 +4,7 @@ class User
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -45,5 +45,26 @@ class User
 
   validates_uniqueness_of :name, :email
 
-  attr_accessible :name, :email, :description, :password, :password_confirmation
+  attr_accessor :login
+  
+  attr_accessible :login, :name, :email, :password, :password_confirmation
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      self.any_of({ :name =>  /^#{Regexp.escape(login)}$/i }, { :email =>  /^#{Regexp.escape(login)}$/i }).first
+    else
+      super
+    end
+  end
+
+  # function to handle user's login via email or name
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login).downcase
+      where(conditions).where('$or' => [ {:name => /^#{Regexp.escape(login)}$/i}, {:email => /^#{Regexp.escape(login)}$/i} ]).first
+    else
+      where(conditions).first
+    end
+  end 
 end
