@@ -44,10 +44,11 @@ class User
   field :password_confirmation, type: String
 
   validates_uniqueness_of :name, :email
+  validates_presence_of :slug
 
   attr_accessor :login
   
-  attr_accessible :login, :name, :email, :password, :password_confirmation
+  attr_accessible :login, :name, :email, :password, :password_confirmation, :slug
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -66,5 +67,15 @@ class User
     else
       where(conditions).first
     end
-  end 
+  end
+
+  #slug describes the part of a URL that is made up of human-readable keywords
+  def slug
+    
+    name.downcase.gsub(" ", "-")  
+  end
+
+  def to_param
+     slug
+   end 
 end

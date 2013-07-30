@@ -2,29 +2,29 @@
 
 <p>
   <b>Name:</b>
-  <%= @user.name %>
+  <%= current_user.name %>
 </p>
 
 <p>
   <b>Email:</b>
-  <%= @user.email %>
+  <%= current_user.email %>
 </p>
 
 <p>
   <b>Description:</b>
-  <%= @user.description %>
+  <%= current_user.description %>
 </p>
 
 <p>
   <b>Password:</b>
-  <%= @user.password %>
+  <%= current_user.password %>
 </p>
 
 <p>
   <b>Password confirmation:</b>
-  <%= @user.password_confirmation %>
+  <%= current_user.password_confirmation %>
 </p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(current_user) %> |
+<%= link_to 'Back', "/" %>
