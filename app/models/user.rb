@@ -44,28 +44,20 @@ class User
   field :password_confirmation, type: String
 
   validates_uniqueness_of :name, :email
+  validates :name, uniqueness: {case_sensitive: true}
   #validates_presence_of :slug
 
   attr_accessor :login
   
   attr_accessible :login, :name, :email, :password, :password_confirmation, #:slug
 
+  #función epecífica para Mongoid
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      self.any_of({ :name =>  /^#{Regexp.escape(login)}$/i }, { :email =>  /^#{Regexp.escape(login)}$/i }).first
+      self.any_of({ name:  /^#{Regexp.escape(login)}$/i }, { email:  /^#{Regexp.escape(login)}$/i }).first
     else
       super
-    end
-  end
-
-  # function to handle user's login via email or name
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-    if login = conditions.delete(:login).downcase
-      where(conditions).where('$or' => [ {:name => /^#{Regexp.escape(login)}$/i}, {:email => /^#{Regexp.escape(login)}$/i} ]).first
-    else
-      where(conditions).first
     end
   end
 
