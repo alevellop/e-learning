@@ -38,16 +38,15 @@
         %section.top-bar-section
           %ul.right
             %li.divider
-            %li
-              = link_to "Courses", courses_path
-            %li.divider
-            = render 'shared/navigation'
+            %li= link_to "Courses", courses_path
+            %li.divider= render 'shared/navigation'
             %li.divider
     
+
     %section.row      
-      %article.small-16.large-10-centered.columns
+      %article.small-16.large-16.columns
         = yield
-    
+
     - flash.each do |name, msg|
       - if msg.is_a?(String)
         = content_tag :div, msg, :id => "flash_#{name}"

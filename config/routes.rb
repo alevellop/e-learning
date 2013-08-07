@@ -1,6 +1,4 @@
 Pfc::Application.routes.draw do
-  
-  resources :courses
 
 
 #devise_for :users siempre debe estar sobre resources :users
@@ -8,6 +6,9 @@ Pfc::Application.routes.draw do
 
   resources :users
 
+  resources :courses do
+    resources :comments
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

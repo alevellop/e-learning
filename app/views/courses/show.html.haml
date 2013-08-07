@@ -1,10 +1,6 @@
-%h1 New course
-
-= render 'form'
-
 %p#notice= notice
 
-%p
+%h1
   %b Title:
   = @course.title
 %p
@@ -35,5 +31,18 @@
   %b Bank account:
   = @course.bank_account
 
-/ <haml:loud> link_to 'Edit', edit_course_path(@course) </haml:loud> |
+- if @course.comments.size > 0
+  %h2 Comments
+  - for comment in @course.comments
+    %h3= comment.author
+    %p= comment.content
+
+%h2 New Comment
+= form_for [@course, Comment.new] do |f|
+  %p
+    = f.label :author
+    = f.text_field :author, value: "#{current_user.id}"
+  %p= f.text_area :content, :rows => 10
+  %p= f.button :comment
+
 = link_to 'Back', courses_path

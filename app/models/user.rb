@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+
+  has_and_belongs_to_many :courses
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -43,8 +45,9 @@ class User
   field :password, type: String
   field :password_confirmation, type: String
 
-  validates_uniqueness_of :name, :email
-  validates :name, uniqueness: {case_sensitive: true}
+  validates_uniqueness_of :name, {case_sensitive: true}
+  validates_uniqueness_of :email
+  
   #validates_presence_of :slug
 
   attr_accessor :login

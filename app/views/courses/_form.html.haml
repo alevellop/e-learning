@@ -21,7 +21,7 @@
      
       / Pendiente: Debe aparecer el nombre pero se guarda en memoria el user_id
       = f.label :author
-      = f.text_field :author, value: current_user.id
+      = f.collection_select :author, User.all, :id, :name
      
       / Pendiente: máximo número de carácteres, y tamaño máximo y mínimo
       = f.label :description
