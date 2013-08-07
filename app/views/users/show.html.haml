@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = current_user.name
+
+%p
+  %b Email:
+  = current_user.email
+
+%p
+  %b Description:
+  = current_user.description
+
+%p
+  %b Password:
+  = current_user.password
+
+%p
+  %b Password confirmation:
+  = current_user.password_confirmation
+
+%p
+  %b= link_to 'Create course', new_course_path
+= link_to 'Back', "/"
+|
+= link_to 'Edit', edit_user_registration_path

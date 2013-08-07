@@ -1,0 +1,33 @@
+%h1 Listing courses
+
+%table
+  %tr
+    %th Title
+    %th Description
+    %th Author
+    %th Language
+    %th Category
+    %th Image
+    %th Price
+    %th Bank account
+    %th
+    %th
+    %th
+  
+  - @courses.each do |course|
+    %tr
+      %td= course.title
+      %td= course.description
+      %td= course.author
+      %td= course.language
+      %td= course.category
+      %td= course.image
+      %td= course.price
+      %td= course.bank_account
+      %td= link_to 'Show', course
+     
+      /
+        <td><haml:loud> link_to 'Edit', edit_course_path(course) </haml:loud></td>
+        <td><haml:loud> link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } </haml:loud></td>
+%br/
+/ <haml:loud> link_to 'New Course', new_course_path </haml:loud>

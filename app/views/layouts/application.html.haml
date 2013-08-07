@@ -1,0 +1,55 @@
+!!!
+/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7 ] <html class="ie6" lang="en">
+/[if IE 7 ] <html class="ie7" lang="en">
+/[if IE 8 ] <html class="ie8" lang="en">
+/ [if (gte IE 9)|!(IE)]><!
+
+%html{:lang => "en"}
+  / <![endif]
+  
+  %head
+    %meta{:charset => "utf-8"}/
+    / Uncomment to make IE8 render like IE7
+    / <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    
+    / Set the viewport width to device width for mobile
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    
+    %title= content_for?(:title) ? yield(:title) : "Untitled"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/custom.modernizr"
+    = csrf_meta_tags
+  
+  %body
+    
+    %header.header
+      %nav.top-bar
+        %ul.title-area
+          
+          %li.name
+            %h1= link_to 'HOME', '/'
+            / <h1><a href="#">HOME</a></h1></li>
+          
+          %li.toggle-topbar.menu-icon
+            %a{:href => "#"}
+              %span Menu
+        
+        %section.top-bar-section
+          %ul.right
+            %li.divider
+            %li
+              = link_to "Courses", courses_path
+            %li.divider
+            = render 'shared/navigation'
+            %li.divider
+    
+    %section.row      
+      %article.small-16.large-10-centered.columns
+        = yield
+    
+    - flash.each do |name, msg|
+      - if msg.is_a?(String)
+        = content_tag :div, msg, :id => "flash_#{name}"
+    
+    = javascript_include_tag "application"

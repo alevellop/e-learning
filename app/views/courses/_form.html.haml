@@ -1,0 +1,61 @@
+= form_for(@course) do |f|
+
+  - if @course.errors.any?
+    
+    #error_explanation
+      
+      %h2
+        = pluralize(@course.errors.count, "error")
+        prohibited this course from being saved:
+      
+      %ul
+        - @course.errors.full_messages.each do |msg|
+          %li= msg
+  
+  %section.row
+    
+    %article.small-18.large-18.columns
+      
+      = f.label :title
+      = f.text_field :title
+     
+      / Pendiente: Debe aparecer el nombre pero se guarda en memoria el user_id
+      = f.label :author
+      = f.text_field :author, value: current_user.id
+     
+      / Pendiente: máximo número de carácteres, y tamaño máximo y mínimo
+      = f.label :description
+      = f.text_area :description
+   
+    %article.small-18.large-8.columns
+     
+      / Pendiente: modificar a select e introducir idiomas
+      = f.label :language
+      = f.text_field :language
+      = f.label :price
+      = f.number_field :price
+
+    %article.small-18.large-8.columns
+     
+      / Pendiente: modificar a select e introducir categorias
+      = f.label :category
+      = f.text_field :category
+      
+      / Pendiente: ocultar, visible cuando price > 0
+      = f.label :bank_account
+      = f.text_field :bank_account
+    
+    %article.small-18.large-18.columns
+      
+      = f.label :image
+      = f.file_field :image
+    
+    %article.small-8.large-8.columns
+     
+      %br/
+      %button #{link_to 'Back', current_user}
+    
+    %article.small-8.large-8.columns
+     
+      %br/
+      = f.button :submit

@@ -1,0 +1,39 @@
+%h1 New course
+
+= render 'form'
+
+%p#notice= notice
+
+%p
+  %b Title:
+  = @course.title
+%p
+  %b Description:
+  = @course.description
+
+%p
+  %b Author:
+  = @course.author
+
+%p
+  %b Language:
+  = @course.language
+
+%p
+  %b Category:
+  = @course.category
+
+%p
+  %b Image:
+  = @course.image
+
+%p
+  %b Price:
+  = @course.price
+
+%p
+  %b Bank account:
+  = @course.bank_account
+
+/ <haml:loud> link_to 'Edit', edit_course_path(@course) </haml:loud> |
+= link_to 'Back', courses_path

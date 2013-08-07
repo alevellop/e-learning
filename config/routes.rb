@@ -1,5 +1,8 @@
 Pfc::Application.routes.draw do
   
+  resources :courses
+
+
 #devise_for :users siempre debe estar sobre resources :users
   devise_for :users
 
