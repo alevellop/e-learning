@@ -1,13 +1,15 @@
-%h1 Listing courses
 
-%section.row
-  %ul.small-block-grid-1.large-block-grid-2
-    - if @courses.size > 0
-      - @courses.each do |course|
-        %li.panel
+%header.row
+  %h1.large-12.columns Listing courses
+
+- if @courses.size > 0
+  %section.row
+    - @courses.each do |course| 
+      %article.small-12.large-6.columns
+        .panel
           %a{href: "/courses/#{course.id}"}
             %h4= course.title
             %h5= course.author
-            %h6
-              = course.price
-              = course.category
+            %p.row
+              .large-6.small-6.columns= course.price
+              .large-6.small-6.columns= course.category

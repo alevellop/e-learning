@@ -16,7 +16,7 @@
     / Set the viewport width to device width for mobile
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     
-    %title= content_for?(:title) ? yield(:title) : "Untitled"
+    %title= content_for?(:title) ? yield(:title) : "PFC"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
@@ -43,8 +43,8 @@
             %li.divider
     
 
-    %section.row      
-      %article.small-16.large-16.columns
+    %section.row     
+      %article.small-12.large-12.columns
         = yield
 
     - flash.each do |name, msg|

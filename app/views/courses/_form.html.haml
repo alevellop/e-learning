@@ -1,20 +1,10 @@
 = form_for(@course) do |f|
-
-  - if @course.errors.any?
-    
-    #error_explanation
-      
-      %h2
-        = pluralize(@course.errors.count, "error")
-        prohibited this course from being saved:
-      
-      %ul
-        - @course.errors.full_messages.each do |msg|
-          %li= msg
+  
+  = render "shared/error_messages", target: @course
   
   %section.row
     
-    %article.small-18.large-18.columns
+    %article.small-12.large-12.columns
       
       = f.label :title
       = f.text_field :title
@@ -27,7 +17,7 @@
       = f.label :description
       = f.text_area :description
    
-    %article.small-18.large-8.columns
+    %article.small-12.large-6.columns
      
       / Pendiente: modificar a select e introducir idiomas
       = f.label :language
@@ -35,7 +25,7 @@
       = f.label :price
       = f.number_field :price
 
-    %article.small-18.large-8.columns
+    %article.small-12.large-6.columns
      
       / Pendiente: modificar a select e introducir categorias
       = f.label :category
@@ -45,17 +35,17 @@
       = f.label :bank_account
       = f.text_field :bank_account
     
-    %article.small-18.large-18.columns
+    %article.small-12.large-12.columns
       
       = f.label :image
       = f.file_field :image
     
-    %article.small-8.large-8.columns
+    %article.small-6.large-6.columns
      
       %br/
       %button #{link_to 'Back', current_user}
     
-    %article.small-8.large-8.columns
+    %article.small-6.large-6.columns
      
       %br/
       = f.button :submit

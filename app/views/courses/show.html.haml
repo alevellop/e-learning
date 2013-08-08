@@ -1,48 +1,64 @@
 %p#notice= notice
 
 %h1
-  %b Title:
+  Title:
   = @course.title
-%p
-  %b Description:
-  = @course.description
+  
+.row
+  %p.large-12.small-12.columns 
+    %b Description:
+    %br/
+    = @course.description
 
-%p
-  %b Author:
-  = @course.author
+.row
+  %p.large-12.small-12.columns 
+    %b Author:
+    = @course.author
 
-%p
-  %b Language:
-  = @course.language
+.row
+  %p.large-12.small-12.columns 
+    %b Language:
+    = @course.language
 
-%p
-  %b Category:
-  = @course.category
+.row
+  %p.large-12.small-12.columns  
+    %b Category:
+    = @course.category
 
-%p
-  %b Image:
-  = @course.image
+.row
+  %p.large-12.small-12.columns 
+    %b Image:
+    = @course.image
 
-%p
-  %b Price:
-  = @course.price
+.row
+  %p.large-12.small-12.columns 
+    %b Price:
+    = @course.price
 
-%p
-  %b Bank account:
-  = @course.bank_account
+.row
+  %p.large-12.small-12.columns 
+    %b Bank account:
+    = @course.bank_account
 
-- if @course.comments.size > 0
-  %h2 Comments
-  - for comment in @course.comments
-    %h3= comment.author
-    %p= comment.content
+%b= link_to 'Back', courses_path
+
+%hr.large-12.small-12.columns 
 
 %h2 New Comment
 = form_for [@course, Comment.new] do |f|
-  %p
-    = f.label :author
-    = f.text_field :author, value: "#{current_user.id}"
-  %p= f.text_area :content, :rows => 10
-  %p= f.button :comment
+  .row
+    %p.large-12.small-12.columns 
+      = f.label :author
+      = f.collection_select :author, User.all, :id, :name
+    %p.large-12.small-12.columns= f.text_area :content
+    %p.large-12.small-12.columns= f.button :comment
 
-= link_to 'Back', courses_path
+- if @course.comments.size > 0
+  %h2 Comments
+  
+  .row
+    - for comment in @course.comments
+      .large-6.small-12.columns 
+        .panel
+          %h6= comment.author
+          %p= comment.content

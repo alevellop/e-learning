@@ -1,6 +1,6 @@
 class Course
   include Mongoid::Document
-
+  
   has_and_belongs_to_many :users
   
   validates_uniqueness_of :title, {case_sensitive: true}
