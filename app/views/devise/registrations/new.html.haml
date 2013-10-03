@@ -25,6 +25,12 @@
       = f.label :password_confirmation
       = f.password_field :password_confirmation
       %br/
+
+  .row  
+    .large-6.small-12.columns
+      = f.label :photo
+      = f.file_field :photo
+      %br/
     
   .row
     .small-12.large-2.columns= f.button :submit, value: "Sign up"

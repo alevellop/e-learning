@@ -38,7 +38,13 @@
       = f.label :current_password
       = f.password_field :current_password, placeholder: 'we need your current password to confirm your changes'
       %br/
-    
+  
+  .row  
+    .large-6.small-12.columns
+      = f.label :photo
+      = f.file_field :photo
+      %br/
+
   .row
     .large-12.small-12.columns
       %button.large-1.small-4.columns= link_to "Back", :back

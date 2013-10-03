@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Paperclip
 
   has_and_belongs_to_many :courses
   # Include default devise modules. Others available are:
@@ -52,7 +53,7 @@ class User
 
   attr_accessor :login
   
-  attr_accessible :login, :name, :email, :password, :password_confirmation, #:slug
+  attr_accessible :photo, :login, :name, :email, :password, :password_confirmation, #:slug
 
   #función epecífica para Mongoid
   def self.find_first_by_auth_conditions(warden_conditions)
@@ -71,6 +72,18 @@ class User
   # end
 
   def to_param
-     "profile" #slug
-   end 
+    "profile" #slug
+  end
+
+  #To attachment photo
+  #view configuration in application.rb and aws.yml
+  has_mongoid_attached_file :photo,
+    storage: :s3,
+    s3_credentials: File.join(Rails.root, 'config', 'aws.yml'),
+    path: 'photos/:id_:photo'
+
+  validates_attachment_content_type :photo, 
+                                    content_type: /^image\/(png|jpg|jpeg)/,
+                                    message: 'only (png/jpg/jpeg) images'
+  
 end

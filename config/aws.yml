@@ -1,0 +1,10 @@
+development: &development
+  bucket: 'pfc-rails'
+  access_key_id: 'AKIAIQQ3EVURZV7M2U3A'
+  secret_access_key: '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'
+
+test:
+  <<: *development
+
+production:
+  <<: *development
