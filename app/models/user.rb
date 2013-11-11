@@ -80,7 +80,7 @@ class User
   has_mongoid_attached_file :photo,
     storage: :s3,
     s3_credentials: File.join(Rails.root, 'config', 'aws.yml'),
-    path: 'photos/:id_:photo'
+    path: 'photos/:id_image'
 
   validates_attachment_content_type :photo, 
                                     content_type: /^image\/(png|jpg|jpeg)/,

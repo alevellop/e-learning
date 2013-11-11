@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
-
+ruby "1.9.3"
 gem 'rails', '3.2.13'
 gem 'mongoid', '~> 3.0.0'
 gem 'devise'
 
+gem "bson_ext"
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 gem 'aws-sdk'
 
