@@ -12,7 +12,7 @@ gem 'aws-sdk'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3', :group => [:development, :test]
+gem 'sqlite3', "~> 1.3.7",:group => [:development, :test]
 gem "heroku"
 
 # Gems used only for assets and not required
