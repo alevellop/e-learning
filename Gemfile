@@ -12,7 +12,7 @@ gem 'aws-sdk'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3', '~> 1.3.7'
+gem 'sqlite3', :group => [:development, :test]
 gem "heroku"
 
 # Gems used only for assets and not required
@@ -38,7 +38,7 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn', :group => [:production]
 
 # Deploy with Capistrano
 # gem 'capistrano'
