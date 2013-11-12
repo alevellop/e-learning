@@ -39,6 +39,7 @@ gem 'jquery-rails'
 
 # Use unicorn as the app server
 gem 'unicorn', :group => [:production]
+gem 'rails_12factor', :group => [:production]
 
 # Deploy with Capistrano
 # gem 'capistrano'
