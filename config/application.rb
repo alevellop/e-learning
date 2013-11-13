@@ -7,7 +7,7 @@ require "active_resource/railtie"
 require "rails/test_unit/railtie"
 require 'mongoid/railtie' 
 
-#require 'rails/all' No parece que sea necesario para Heroku
+#require 'rails/all' #No parece que sea necesario para Heroku
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
