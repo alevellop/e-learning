@@ -40,6 +40,7 @@ GEM
     bson_ext (1.9.2)
       bson (~> 1.9.2)
     builder (3.0.4)
+    chunky_png (1.2.9)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -51,6 +52,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     devise (3.2.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -60,6 +67,7 @@ GEM
     erubis (2.7.0)
     excon (0.25.3)
     execjs (2.0.2)
+    fssm (0.2.10)
     haml (4.0.4)
       tilt
     heroku (3.0.1)
@@ -176,6 +184,7 @@ DEPENDENCIES
   aws-sdk
   bson_ext
   coffee-rails (~> 3.2.1)
+  compass-rails
   devise
   haml
   heroku
