@@ -38,10 +38,9 @@
         = content_tag :div, msg, :id => "flash_#{name}"
     
     = javascript_include_tag "vendor/jquery"
-    = javascript_include_tag "foundation.min"
-    = javascript_include_tag "foundation.topbar"
-    = javascript_include_tag "foundation.alert"
-    = javascript_include_tag "foundation.tooltip"
+    = javascript_include_tag "foundation/foundation"
+    = javascript_include_tag "foundation/foundation.topbar"
+    = javascript_include_tag "foundation/foundation.alert"
 
     :javascript
       $(document).foundation();
