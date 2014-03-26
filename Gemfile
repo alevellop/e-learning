@@ -7,13 +7,12 @@ gem 'devise'
 
 gem "bson_ext"
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
-gem 'aws-sdk'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3', "~> 1.3.7",:group => [:development, :test]
-gem "heroku"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,6 +23,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'foundation-rails'
 end
 
 gem 'haml'
@@ -36,6 +36,7 @@ gem 'jquery-rails'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
+gem 'thin'
 # Use unicorn as the app server
 gem 'unicorn', :group => [:production]
 gem 'rails_12factor', :group => [:production]
