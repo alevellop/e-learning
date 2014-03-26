@@ -66,5 +66,5 @@ Pfc::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
   #necesario para Zurb-Foundation
-  config.asses.precompile += %w(vendor/modernizr.js)
+  config.assets.precompile += %w(vendor/modernizr.js)
 end
