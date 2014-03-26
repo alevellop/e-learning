@@ -1,11 +1,17 @@
 source 'https://rubygems.org'
 
 ruby "1.9.3"
+#ruby-gemset=e-learning
+
 gem 'rails', '3.2.13'
-gem 'mongoid', '~> 3.0.0'
+
 gem 'devise'
 
-gem "bson_ext"
+group :development do
+	gem 'mongoid', '~> 3.0.0'
+	gem "bson_ext"
+end
+
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 
 
@@ -16,15 +22,15 @@ gem 'sqlite3', "~> 1.3.7",:group => [:development, :test]
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
-  gem 'foundation-rails'
-end
+gem 'sass-rails',   '~> 3.2.3'
+gem 'coffee-rails', '~> 3.2.1'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
+
+gem 'uglifier', '>= 1.0.3'
+gem 'foundation-rails'
+
 
 gem 'haml'
 
@@ -35,12 +41,14 @@ gem 'jquery-rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
+gem 'jbuilder'
 gem 'turbolinks'
 gem 'thin'
 # Use unicorn as the app server
-gem 'unicorn', :group => [:production]
-gem 'rails_12factor', :group => [:production]
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
 
 # Deploy with Capistrano
 # gem 'capistrano'
