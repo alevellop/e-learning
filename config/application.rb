@@ -4,8 +4,9 @@ require File.expand_path('../boot', __FILE__)
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
-require "rails/test_unit/railtie"
-require 'mongoid/railtie' 
+require "sprockets/railtie"
+# require "rails/test_unit/railtie"
+# require 'mongoid/railtie' 
 
 #require 'rails/all' #No parece que sea necesario para Heroku
 
